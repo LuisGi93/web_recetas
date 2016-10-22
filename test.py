@@ -11,6 +11,10 @@ class TestParticipant(unittest.TestCase):
         db.session.close()
         db.drop_all()
         db.create_all()
+        self.app = app.test_client()
+        # propagate the exceptions to the test client
+        self.app.testing = True
+
 
     def test_receta(self):
         print ("Receta:")
@@ -36,6 +40,11 @@ class TestParticipant(unittest.TestCase):
         print ("  Inserccion: ok")
         assert len(usuarios)==len(size)+1
         print ("  Numero entradas: ok")
+
+    def test_home_status_code(self):
+        result = self.app.get('auth/todas_recetas',follow_redirects=True)
+        self.assertEqual(result.status_code, 200)
+        print ("  Url todas_recetas: 200")
 
 
 
