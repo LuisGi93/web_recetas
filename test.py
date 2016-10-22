@@ -13,8 +13,8 @@ class TestParticipant(unittest.TestCase):
         db.create_all()
 
     def test_receta(self):
-	    print "Receta:"
-	    size= Receta.query.all()
+        print "Receta:"
+        size= Receta.query.all()
         receta = Receta('Lasana bolonesa', 'c4@c4.com','Canelones, cerne, bechamel')
         db.session.add(receta)
         db.session.commit()
