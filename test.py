@@ -13,29 +13,29 @@ class TestParticipant(unittest.TestCase):
         db.create_all()
 
     def test_receta(self):
-        print "Receta:"
+        print ("Receta:")
         size= Receta.query.all()
         receta = Receta('Lasana bolonesa', 'c4@c4.com','Canelones, cerne, bechamel')
         db.session.add(receta)
         db.session.commit()
         recetas = Receta.query.all()
         assert receta in recetas
-        print "  Inserccion: ok"
+        print ("  Inserccion: ok")
         assert len(recetas)==len(size)+1
-        print "  Numero entradas: ok"
+        print ("  Numero entradas: ok")
 
 
     def test_usuario(self):
-        print "Usuario:"
+        print ("Usuario:")
         size= User.query.all()
         usuario = User("pepe","pepe@pepe.com","123423", 'user', '0')
         db.session.add(usuario)
         db.session.commit()
         usuarios = User.query.all()
         assert usuario in usuarios
-        print "  Inserccion: ok"
+        print ("  Inserccion: ok")
         assert len(usuarios)==len(size)+1
-        print "  Numero entradas: ok"
+        print ("  Numero entradas: ok")
 
 
 
